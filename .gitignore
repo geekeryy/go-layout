@@ -1,0 +1,7 @@
+.idea
+.DS_Store
+api/*/*.go
+cmd/wire_gen.go
+configs/*.pb.go
+configs/*.pb.validate.go
+pkg/errcode/code_string.go
