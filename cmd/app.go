@@ -84,6 +84,6 @@ func (app *App) runPprof() error {
 		Addr:    app.conf.Get().PprofAddr,
 		Handler: http.DefaultServeMux,
 	}
-	log.Printf("pprof run successv in %s \n", app.conf.Get().PprofAddr)
+	log.Printf("pprof run success in %s \n", app.conf.Get().PprofAddr)
 	return s.ListenAndServe()
 }

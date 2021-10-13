@@ -3,12 +3,11 @@ module github.com/comeonjy/go-layout
 go 1.17
 
 require (
-	github.com/comeonjy/go-kit v1.0.1-0.20211011094659-20ec663e35af
+	github.com/comeonjy/go-kit v0.0.2-0.20211018102156-a36670aff98e
 	github.com/envoyproxy/protoc-gen-validate v0.6.1
 	github.com/gogo/protobuf v1.3.2
 	github.com/google/wire v0.5.0
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.6.0
-	github.com/pkg/errors v0.9.1
 	github.com/spf13/cobra v1.2.1
 	go.mongodb.org/mongo-driver v1.7.3
 	golang.org/x/net v0.0.0-20210908191846-a5e095526f91 // indirect
@@ -24,7 +23,6 @@ require (
 	github.com/elastic/go-licenser v0.3.1 // indirect
 	github.com/elastic/go-sysinfo v1.1.1 // indirect
 	github.com/elastic/go-windows v1.0.0 // indirect
-	github.com/fsnotify/fsnotify v1.5.0 // indirect
 	github.com/go-stack/stack v1.8.0 // indirect; indirectgo mo
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/golang/snappy v0.0.1 // indirect
@@ -35,9 +33,11 @@ require (
 	github.com/klauspost/compress v1.13.6 // indirect
 	github.com/kr/text v0.2.0 // indirect
 	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect
+	github.com/pkg/errors v0.9.1 // indirect
 	github.com/prometheus/procfs v0.0.0-20190507164030-5867b95ac084 // indirect
 	github.com/santhosh-tekuri/jsonschema v1.2.4 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
+	github.com/thedevsaddam/gojsonq/v2 v2.5.2 // indirect
 	github.com/xdg-go/pbkdf2 v1.0.0 // indirect
 	github.com/xdg-go/scram v1.0.2 // indirect
 	github.com/xdg-go/stringprep v1.0.2 // indirect

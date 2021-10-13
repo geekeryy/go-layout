@@ -8,13 +8,13 @@ import (
 	"github.com/comeonjy/go-layout/configs"
 )
 
-var ProviderSet = wire.NewSet(NewMongo, NewData, NewWorkRepo)
+var ProviderSet = wire.NewSet( NewData, NewWorkRepo)
 
 type Data struct {
 	Mongo *mongo.Collection
 }
 
-func NewMongo(cfg configs.Interface) *mongo.Collection {
+func newMongo(cfg configs.Interface) *mongo.Collection {
 	xmongo.Init(xmongo.Config{
 		Username: cfg.Get().MongoUsername,
 		Password: cfg.Get().MongoPassword,
@@ -24,8 +24,8 @@ func NewMongo(cfg configs.Interface) *mongo.Collection {
 	return xmongo.Conn("user")
 }
 
-func NewData(client *mongo.Collection) *Data {
+func NewData(cfg configs.Interface) *Data {
 	return &Data{
-		Mongo: client,
+		Mongo: newMongo(cfg),
 	}
 }

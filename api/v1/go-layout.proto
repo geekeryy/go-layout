@@ -12,16 +12,7 @@ option go_package = ".;v1";
 service Scheduler{
   rpc Ping (Empty) returns (Result) {
     option (google.api.http) = {
-      get: "/v1/example/ping"
-    };
-  }
-  rpc QuerySource (QuerySourceParam) returns (SourceInfo) {
-    option (google.api.http) = {
-      post: "/v1/example/get_source"
-      body: "*"
-      additional_bindings {
-        get: "/v2/example/get_source/{source_id}"
-      }
+      get: "/v1/ping"
     };
   }
 }
@@ -34,13 +25,4 @@ message Result{
 
 message Empty{
 
-}
-
-message QuerySourceParam{
-  uint64 source_id = 1;
-}
-
-message SourceInfo{
-  uint64 source_id = 1;
-  string text = 2;
 }

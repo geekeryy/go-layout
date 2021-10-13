@@ -19,7 +19,7 @@ docker:
 kit:
 	if [ -z $(server_name)];then echo "err param server_name";exit 1; fi
 	-rm -rf ./.git
-	-echo ".idea\n.DS_Store" > .gitignore
+	-sed -i '' -e '/clean-me/,$d' .gitignore
 	-mv api/v1/go-layout.proto api/v1/$(server_name).proto
 	-find ./ -type f -name .github/workflows/main.yml -exec sed -i '' -e 's/go-layout/$(server_name)/g' {} \;
 	-find ./ -type f ! -name Makefile -exec sed -i '' -e 's/github.com\/comeonjy\/go-layout/$(server_name)/g' {} \;
