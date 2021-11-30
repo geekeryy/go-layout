@@ -3,6 +3,7 @@ package server
 import (
 	"time"
 
+	"github.com/comeonjy/go-kit/grpc/reloadconfig"
 	"github.com/comeonjy/go-kit/pkg/xenv"
 	"github.com/comeonjy/go-kit/pkg/xlog"
 	"github.com/comeonjy/go-kit/pkg/xmiddleware"
@@ -12,17 +13,17 @@ import (
 	"github.com/comeonjy/go-layout/api/v1"
 	"github.com/comeonjy/go-layout/configs"
 	"github.com/comeonjy/go-layout/internal/service"
-	"github.com/comeonjy/go-layout/pkg/consts"
 )
 
 var ProviderSet = wire.NewSet(NewGrpcServer, NewHttpServer)
 
-func NewGrpcServer(srv *service.SchedulerService, conf configs.Interface,logger *xlog.Logger) *grpc.Server {
+func NewGrpcServer(srv *service.SchedulerService, conf configs.Interface, logger *xlog.Logger) *grpc.Server {
 	server := grpc.NewServer(
 		grpc.ConnectionTimeout(2*time.Second),
 		grpc.ChainUnaryInterceptor(
-			xmiddleware.GrpcLogger(consts.TraceName,logger), xmiddleware.GrpcValidate, xmiddleware.GrpcRecover(logger), xmiddleware.GrpcAuth, xmiddleware.GrpcApm(conf.Get().ApmUrl, consts.AppName, consts.AppVersion, xenv.GetEnv(consts.AppEnv))),
+			xmiddleware.GrpcLogger(xenv.GetEnv(xenv.TraceName), logger), xmiddleware.GrpcValidate, xmiddleware.GrpcRecover(logger), xmiddleware.GrpcAuth, xmiddleware.GrpcApm(conf.Get().ApmUrl, xenv.GetEnv(xenv.AppName), xenv.GetEnv(xenv.AppVersion), xenv.GetEnv(xenv.AppEnv))),
 	)
 	v1.RegisterSchedulerServer(server, srv)
+	reloadconfig.RegisterReloadConfigServer(server, reloadconfig.NewServer(conf))
 	return server
 }

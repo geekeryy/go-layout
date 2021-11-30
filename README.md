@@ -23,15 +23,14 @@ kit new demo-project
 
 ### 前置工作
 ```shell
-go install github.com/google/wire/cmd/wire
-go install golang.org/x/tools/cmd/stringer
-
 go install \
-github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway \
-github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2 \
-google.golang.org/protobuf/cmd/protoc-gen-go \
-google.golang.org/grpc/cmd/protoc-gen-go-grpc \
-github.com/envoyproxy/protoc-gen-validate
+	github.com/google/wire/cmd/wire@latest \
+	golang.org/x/tools/cmd/stringer@latest \
+    github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway@latest \
+    github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2@latest \
+    google.golang.org/protocpbuf/cmd/protoc-gen-go@latest \
+    google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest \
+    github.com/envoyproxy/protoc-gen-validate@latest
 ```
 
 ### 版本管理（ [SemVer](https://semver.org/lang/zh-CN/) ）
@@ -94,4 +93,4 @@ go-layout是根据JetBrains s.r.o 授予的免费JetBrains开源许可证与GoLa
 ### License
 © JiangYang, 2020~time.Now
 
-Released under the Apache [License](https://github.com/comeonjy/go-layout/blob/master/LICENSE)
+Released under the Apache [License](https://$(server_name)/blob/master/LICENSE)

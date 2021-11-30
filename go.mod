@@ -3,7 +3,9 @@ module github.com/comeonjy/go-layout
 go 1.17
 
 require (
-	github.com/comeonjy/go-kit v0.0.2-0.20211018102156-a36670aff98e
+	github.com/comeonjy/account v0.0.0-20211130163721-07d2274cd212
+	github.com/comeonjy/go-kit v0.0.4-0.20211203092655-4eb3fb4690ec
+	github.com/comeonjy/working v0.0.0-20211201093232-bc3c29a7ae11
 	github.com/envoyproxy/protoc-gen-validate v0.6.1
 	github.com/gogo/protobuf v1.3.2
 	github.com/google/wire v0.5.0
@@ -31,10 +33,8 @@ require (
 	github.com/jcchavezs/porto v0.1.0 // indirect
 	github.com/joeshaw/multierror v0.0.0-20140124173710-69b34d4ec901 // indirect
 	github.com/klauspost/compress v1.13.6 // indirect
-	github.com/kr/text v0.2.0 // indirect
-	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect
 	github.com/pkg/errors v0.9.1 // indirect
-	github.com/prometheus/procfs v0.0.0-20190507164030-5867b95ac084 // indirect
+	github.com/prometheus/procfs v0.6.0 // indirect
 	github.com/santhosh-tekuri/jsonschema v1.2.4 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/thedevsaddam/gojsonq/v2 v2.5.2 // indirect
@@ -52,7 +52,5 @@ require (
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c // indirect
 	golang.org/x/tools v0.1.5 // indirect
 	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
-	gopkg.in/check.v1 v1.0.0-20200227125254-8fa46927fb4f // indirect
-	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 	howett.net/plist v0.0.0-20181124034731-591f970eefbb // indirect
 )
