@@ -3,6 +3,7 @@ package server
 import (
 	"time"
 
+	"github.com/comeonjy/go-kit/grpc/reloadconfig"
 	"github.com/comeonjy/go-kit/pkg/xenv"
 	"github.com/comeonjy/go-kit/pkg/xlog"
 	"github.com/comeonjy/go-kit/pkg/xmiddleware"
@@ -24,5 +25,6 @@ func NewGrpcServer(srv *service.SchedulerService, conf configs.Interface,logger 
 			xmiddleware.GrpcLogger(consts.TraceName,logger), xmiddleware.GrpcValidate, xmiddleware.GrpcRecover(logger), xmiddleware.GrpcAuth, xmiddleware.GrpcApm(conf.Get().ApmUrl, consts.AppName, consts.AppVersion, xenv.GetEnv(consts.AppEnv))),
 	)
 	v1.RegisterSchedulerServer(server, srv)
+	reloadconfig.RegisterReloadConfigServer(server,reloadconfig.NewServer(conf))
 	return server
 }

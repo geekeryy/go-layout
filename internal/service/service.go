@@ -39,6 +39,6 @@ func (svc *SchedulerService) AuthFuncOverride(ctx context.Context, fullMethodNam
 func (svc *SchedulerService) Ping(ctx context.Context, in *v1.Empty) (*v1.Result, error) {
 	return &v1.Result{
 		Code:    200,
-		Message: "pong",
+		Message: svc.conf.Get().Mode,
 	}, nil
 }

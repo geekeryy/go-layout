@@ -1,6 +1,6 @@
 .idea
 .DS_Store
-
+*.make
 
 # clean-me （被清理）
 api/*/*.go

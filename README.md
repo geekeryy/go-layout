@@ -94,4 +94,4 @@ go-layout是根据JetBrains s.r.o 授予的免费JetBrains开源许可证与GoLa
 ### License
 © JiangYang, 2020~time.Now
 
-Released under the Apache [License](https://github.com/comeonjy/go-layout/blob/master/LICENSE)
+Released under the Apache [License](https://$(server_name)/blob/master/LICENSE)
