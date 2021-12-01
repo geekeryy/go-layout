@@ -46,6 +46,5 @@ docker:
 kit:
 	if [ -z $(server_name)];then echo "err param server_name";exit 1; fi
 	-rm -rf ./.git
-	-sed -i '' -e '/clean-me/,$d' .gitignore
 	-mv api/v1/go-layout.proto api/v1/$(server_name).proto
 	-find ./ -type f ! -name Makefile -exec sed -i '' -e 's/github.com\/comeonjy\/go-layout/$(server_name)/g' {} \;
