@@ -31,7 +31,7 @@ func NewSchedulerClient(cc grpc.ClientConnInterface) SchedulerClient {
 
 func (c *schedulerClient) Ping(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Result, error) {
 	out := new(Result)
-	err := c.cc.Invoke(ctx, "/task_system.scheduler.v1.Scheduler/Ping", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/golayout.v1.Scheduler/Ping", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -76,7 +76,7 @@ func _Scheduler_Ping_Handler(srv interface{}, ctx context.Context, dec func(inte
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/task_system.scheduler.v1.Scheduler/Ping",
+		FullMethod: "/golayout.v1.Scheduler/Ping",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SchedulerServer).Ping(ctx, req.(*Empty))
@@ -88,7 +88,7 @@ func _Scheduler_Ping_Handler(srv interface{}, ctx context.Context, dec func(inte
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var Scheduler_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "task_system.scheduler.v1.Scheduler",
+	ServiceName: "golayout.v1.Scheduler",
 	HandlerType: (*SchedulerServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

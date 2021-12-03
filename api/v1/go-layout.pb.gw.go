@@ -61,7 +61,7 @@ func RegisterSchedulerHandlerServer(ctx context.Context, mux *runtime.ServeMux, 
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/task_system.scheduler.v1.Scheduler/Ping", runtime.WithHTTPPathPattern("/v1/ping"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/golayout.v1.Scheduler/Ping", runtime.WithHTTPPathPattern("/v1/ping"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -123,7 +123,7 @@ func RegisterSchedulerHandlerClient(ctx context.Context, mux *runtime.ServeMux, 
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/task_system.scheduler.v1.Scheduler/Ping", runtime.WithHTTPPathPattern("/v1/ping"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/golayout.v1.Scheduler/Ping", runtime.WithHTTPPathPattern("/v1/ping"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return

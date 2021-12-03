@@ -84,6 +84,8 @@ github.com/comeonjy/account v0.0.0-20211130163721-07d2274cd212 h1:hHgibly0KQK1bH
 github.com/comeonjy/account v0.0.0-20211130163721-07d2274cd212/go.mod h1:v1/qpH5hWy1KDBLBwe7S0vlS+dBns31kSY6oPpJjWg8=
 github.com/comeonjy/go-kit v0.0.3 h1:W7XT8NsBuF2Tc6vtGJo/qIsjjiVRwzisbJU2UTP6N3o=
 github.com/comeonjy/go-kit v0.0.3/go.mod h1:O7jUGXWSEmSZMAqDnBKoMA8lSO+e36g+IXypVUsHVDc=
+github.com/comeonjy/go-kit v0.0.4-0.20211203092655-4eb3fb4690ec h1:VzqVese7xxN7lbibtH7Sgw9fob3x1sj3LPiLVij1LSQ=
+github.com/comeonjy/go-kit v0.0.4-0.20211203092655-4eb3fb4690ec/go.mod h1:cGTBfRwATkvdJedtCgVFKi1dsm/swvb7Vm2MhVDyVFg=
 github.com/comeonjy/working v0.0.0-20211201093232-bc3c29a7ae11 h1:I/N8uVHDMCmkloyexXGEzY5LwcpsJdKQxBIyvZwzAs8=
 github.com/comeonjy/working v0.0.0-20211201093232-bc3c29a7ae11/go.mod h1:oF7K/1/cT38aNM/hbtTRoGp4eaNiMtDpWn3NZzFRgyo=
 github.com/coreos/go-semver v0.3.0/go.mod h1:nnelYz7RCh+5ahJtPPxZlU+153eP4D4r3EedlOD2RNk=
