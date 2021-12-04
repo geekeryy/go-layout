@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/comeonjy/account v0.0.0-20211130163721-07d2274cd212
-	github.com/comeonjy/go-kit v0.0.4-0.20211203092655-4eb3fb4690ec
+	github.com/comeonjy/go-kit v0.0.5-0.20211204083859-bb6b946f3682
 	github.com/comeonjy/working v0.0.0-20211201093232-bc3c29a7ae11
 	github.com/envoyproxy/protoc-gen-validate v0.6.1
 	github.com/gogo/protobuf v1.3.2
