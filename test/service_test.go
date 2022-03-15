@@ -2,6 +2,8 @@ package test
 
 import (
 	"context"
+	"fmt"
+	"strings"
 	"testing"
 
 	"github.com/comeonjy/go-kit/grpc/reloadconfig"
@@ -20,4 +22,9 @@ func TestReloadConfig(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
+}
+
+func TestDemo(t *testing.T)  {
+	split := strings.Split("8081", ":")
+	fmt.Println(split[0])
 }
