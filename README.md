@@ -33,6 +33,42 @@ go install \
     github.com/envoyproxy/protoc-gen-validate@latest
 ```
 
+### 目录结构
+```
+.
+├── api
+│   └── v1
+│       └── go-layout.proto
+├── cmd
+│   ├── app.go
+│   └── wire.go
+├── configs
+│   └── config.go
+├── internal
+│   ├── domain [ DDD领域层 ]
+│   │   ├── biz.go
+│   │   └── work.go
+│   ├── data [ DDD基础设施层 ]
+│   │   ├── data.go
+│   │   └── work.go
+│   ├── server [ DDD接口层 ]
+│   │   ├── grpc.go
+│   │   └── http.go
+│   └── service [ DDD应用层 ]
+│       └── service.go
+├── main.go
+├── pkg
+│   ├── consts
+│   │   └── const.go
+│   └── errcode
+│       ├── code_string.go
+│       └── err_code.go
+├── test
+│   └── service_test.go
+└── third_party
+
+```
+
 ### 版本管理（ [SemVer](https://semver.org/lang/zh-CN/) ）
 版本格式：主版本号.次版本号.修订号
 1. 主版本号：当你做了不兼容的API修改

@@ -3,13 +3,13 @@ package service
 import (
 	"context"
 
+	"github.com/comeonjy/go-layout/internal/domain/repository"
 	"github.com/google/wire"
 	"google.golang.org/grpc/metadata"
 
 	"github.com/comeonjy/go-kit/pkg/xlog"
 	v1 "github.com/comeonjy/go-layout/api/v1"
 	"github.com/comeonjy/go-layout/configs"
-	"github.com/comeonjy/go-layout/internal/data"
 )
 
 var ProviderSet = wire.NewSet(NewSchedulerService)
@@ -18,10 +18,10 @@ type SchedulerService struct {
 	v1.UnimplementedSchedulerServer
 	conf     configs.Interface
 	logger   *xlog.Logger
-	workRepo data.WorkRepo
+	workRepo repository.WorkRepo
 }
 
-func NewSchedulerService(conf configs.Interface, logger *xlog.Logger, workRepo data.WorkRepo) *SchedulerService {
+func NewSchedulerService(conf configs.Interface, logger *xlog.Logger, workRepo repository.WorkRepo) *SchedulerService {
 	return &SchedulerService{
 		conf:     conf,
 		workRepo: workRepo,

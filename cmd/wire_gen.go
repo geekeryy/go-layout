@@ -8,24 +8,22 @@ package cmd
 
 import (
 	"context"
+	_ "net/http/pprof"
+
 	"github.com/comeonjy/go-kit/pkg/xlog"
 	"github.com/comeonjy/go-layout/configs"
-	"github.com/comeonjy/go-layout/internal/data"
+	data2 "github.com/comeonjy/go-layout/internal/infrastructure/data"
 	"github.com/comeonjy/go-layout/internal/server"
 	"github.com/comeonjy/go-layout/internal/service"
-)
-
-import (
-	_ "net/http/pprof"
 )
 
 // Injectors from wire.go:
 
 func InitApp(ctx context.Context, logger *xlog.Logger) *App {
 	configsInterface := configs.NewConfig(ctx)
-	dataData := data.NewData(configsInterface)
-	workRepo := data.NewWorkRepo(dataData)
-	schedulerService := service.NewSchedulerService(configsInterface, logger, workRepo)
+	dataData := data2.NewData(configsInterface)
+	workRepo := data2.NewWorkRepo(dataData)
+	schedulerService := application.NewSchedulerService(configsInterface, logger, workRepo)
 	grpcServer := server.NewGrpcServer(schedulerService, configsInterface, logger)
 	httpServer := server.NewHttpServer(ctx, configsInterface, logger, schedulerService)
 	app := newApp(ctx, grpcServer, httpServer, configsInterface)

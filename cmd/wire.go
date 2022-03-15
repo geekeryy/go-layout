@@ -8,17 +8,16 @@ import (
 
 	"github.com/comeonjy/go-kit/pkg/xlog"
 	"github.com/comeonjy/go-layout/configs"
+	"github.com/comeonjy/go-layout/internal/infrastructure/data"
 	"github.com/google/wire"
 
-	"github.com/comeonjy/go-layout/internal/data"
 	"github.com/comeonjy/go-layout/internal/server"
-	"github.com/comeonjy/go-layout/internal/service"
 )
 
-func InitApp(ctx context.Context,logger *xlog.Logger) *App {
+func InitApp(ctx context.Context, logger *xlog.Logger) *App {
 	panic(wire.Build(
 		server.ProviderSet,
-		service.ProviderSet,
+		application.ProviderSet,
 		newApp,
 		configs.ProviderSet,
 		data.ProviderSet,

@@ -24,11 +24,14 @@ init:
 vet:
 	 find * -type d -maxdepth 3 -print |  xargs -L 1  bash -c 'cd "$$0" && pwd  && go vet'
 
-# 本地调试
-debug-dev:export APP_ENV=dev
-debug-dev:
-	go build -gcflags "all=-N -l" main.go
-	dlv --listen=:2345 --headless=true --api-version=2 --accept-multiclient exec ./main
+# 更新依赖
+u:
+	go get github.com/comeonjy/go-kit@main
+
+# 拦截k8s流量到本地
+intercept:
+	telepresence quit -u && telepresence connect
+	telepresence intercept $(SERVER_NAME) --http-header=who=jiangyang -n default
 
 # 本地docker部署
 docker:
