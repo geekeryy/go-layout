@@ -1,4 +1,4 @@
-package data
+package persistence
 
 import (
 	"github.com/comeonjy/go-layout/configs"

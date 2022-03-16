@@ -1,4 +1,4 @@
-package test
+package tests
 
 import (
 	"context"
@@ -9,7 +9,6 @@ import (
 	"github.com/comeonjy/go-kit/grpc/reloadconfig"
 	"google.golang.org/grpc"
 )
-
 
 func TestReloadConfig(t *testing.T) {
 	dial, err := grpc.Dial("localhost:8081", grpc.WithInsecure())
@@ -24,7 +23,7 @@ func TestReloadConfig(t *testing.T) {
 	}
 }
 
-func TestDemo(t *testing.T)  {
+func TestDemo(t *testing.T) {
 	split := strings.Split("8081", ":")
 	fmt.Println(split[0])
 }

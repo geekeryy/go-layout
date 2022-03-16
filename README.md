@@ -13,6 +13,7 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/comeonjy/go-layout)
 
 ### TODO
+- [ ] 事件总线
 
 ### 安装
 ```shell
@@ -36,36 +37,27 @@ go install \
 ### 目录结构
 ```
 .
-├── api
-│   └── v1
-│       └── go-layout.proto
-├── cmd
-│   ├── app.go
-│   └── wire.go
-├── configs
-│   └── config.go
+├── api [ pb ]
+├── cmd [ 程序入口 ]
+├── configs [ 配置 ]
+├── docs [ 文档 ]
 ├── internal
 │   ├── domain [ DDD领域层 ]
-│   │   ├── biz.go
-│   │   └── work.go
-│   ├── data [ DDD基础设施层 ]
-│   │   ├── data.go
-│   │   └── work.go
+│   │   ├── aggregate [ 聚合 ]
+│   │   ├── entity [ 实体 ]
+│   │   ├── repository [ 仓储接口/资源库 ]
+│   │   └── valobj [ 值对象 ]
+│   ├── infra [ DDD基础设施层 ]
+│   │   ├── event
+│   │   ├── mq 
+│   │   └── persistence [ 数据库持久层 ]
 │   ├── server [ DDD接口层 ]
-│   │   ├── grpc.go
-│   │   └── http.go
 │   └── service [ DDD应用层 ]
-│       └── service.go
 ├── main.go
-├── pkg
-│   ├── consts
-│   │   └── const.go
-│   └── errcode
-│       ├── code_string.go
-│       └── err_code.go
-├── test
-│   └── service_test.go
-└── third_party
+├── pkg [ 工具库 ]
+├── tests [ 测试包 ]
+└── third_party [ 三方包 ]
+
 
 ```
 
@@ -130,3 +122,9 @@ go-layout是根据JetBrains s.r.o 授予的免费JetBrains开源许可证与GoLa
 © JiangYang, 2020~time.Now
 
 Released under the Apache [License](https://$(server_name)/blob/master/LICENSE)
+
+
+### 参考资料
+[1] [Factor12](https://12factor.net/zh_cn/)
+
+[2] [DDD分层架构实践](https://tkstorm.com/posts-list/software-engineering/cloud-native/ddd-layer)

@@ -1,13 +1,13 @@
 module github.com/comeonjy/go-layout
 
-go 1.17
+go 1.18
 
 require (
-	github.com/comeonjy/go-kit v0.0.6-0.20220314063925-7f74939f9e60
+	github.com/comeonjy/go-kit v0.0.0-20220316095603-b034809497cc
 	github.com/google/wire v0.5.0
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.6.0
 	github.com/spf13/cobra v1.2.1
-	golang.org/x/net v0.0.0-20210908191846-a5e095526f91 // indirect
+	golang.org/x/net v0.0.0-20211015210444-4f30a5c0130f // indirect
 	golang.org/x/sys v0.0.0-20220310020820-b874c991c1a5 // indirect
 	golang.org/x/text v0.3.7 // indirect
 	google.golang.org/genproto v0.0.0-20211008145708-270636b82663
@@ -35,8 +35,8 @@ require (
 	go.elastic.co/apm/module/apmhttp v1.14.0 // indirect
 	go.elastic.co/fastjson v1.1.0 // indirect
 	golang.org/x/lint v0.0.0-20210508222113-6edffad5e616 // indirect
-	golang.org/x/mod v0.4.2 // indirect
-	golang.org/x/tools v0.1.5 // indirect
+	golang.org/x/mod v0.6.0-dev.0.20211013180041-c96bc1413d57 // indirect
+	golang.org/x/tools v0.1.8-0.20211029000441-d6a9af8af023 // indirect
 	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
 	howett.net/plist v0.0.0-20181124034731-591f970eefbb // indirect
 )

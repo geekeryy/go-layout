@@ -2,8 +2,9 @@ package service
 
 import (
 	"context"
+	"log"
 
-	"github.com/comeonjy/go-layout/internal/domain/repository"
+	"github.com/comeonjy/go-layout/internal/domain/aggregate"
 	"github.com/google/wire"
 	"google.golang.org/grpc/metadata"
 
@@ -16,16 +17,16 @@ var ProviderSet = wire.NewSet(NewSchedulerService)
 
 type SchedulerService struct {
 	v1.UnimplementedSchedulerServer
-	conf     configs.Interface
-	logger   *xlog.Logger
-	workRepo repository.WorkRepo
+	conf        configs.Interface
+	logger      *xlog.Logger
+	workUseCase *aggregate.WorkUseCase
 }
 
-func NewSchedulerService(conf configs.Interface, logger *xlog.Logger, workRepo repository.WorkRepo) *SchedulerService {
+func NewSchedulerService(conf configs.Interface, logger *xlog.Logger, workUseCase *aggregate.WorkUseCase) *SchedulerService {
 	return &SchedulerService{
-		conf:     conf,
-		workRepo: workRepo,
-		logger:   logger,
+		conf:        conf,
+		workUseCase: workUseCase,
+		logger:      logger,
 	}
 }
 
@@ -37,8 +38,14 @@ func (svc *SchedulerService) AuthFuncOverride(ctx context.Context, fullMethodNam
 }
 
 func (svc *SchedulerService) Ping(ctx context.Context, in *v1.Empty) (*v1.Result, error) {
+	info, err := svc.workUseCase.GetInfo(1)
+	if err != nil {
+		return nil, err
+	}
+	log.Println(info)
 	return &v1.Result{
 		Code:    200,
 		Message: svc.conf.Get().Mode,
+		Data:    nil,
 	}, nil
 }
