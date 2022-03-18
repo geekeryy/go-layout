@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package base;
+
+import "google/protobuf/any.proto";
+option go_package = "github.com/comeonjy/go-layout/api/base;base";
+
+message Result{
+  int64 code = 1;
+  string message = 2;
+  google.protobuf.Any data = 3;
+}
+
+message Empty{
+
+}

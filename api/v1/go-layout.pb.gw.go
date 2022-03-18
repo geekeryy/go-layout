@@ -13,6 +13,7 @@ import (
 	"io"
 	"net/http"
 
+	"github.com/comeonjy/go-layout/api/base"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/utilities"
 	"google.golang.org/grpc"
@@ -32,7 +33,7 @@ var _ = utilities.NewDoubleArray
 var _ = metadata.Join
 
 func request_Scheduler_Ping_0(ctx context.Context, marshaler runtime.Marshaler, client SchedulerClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq Empty
+	var protoReq base.Empty
 	var metadata runtime.ServerMetadata
 
 	msg, err := client.Ping(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -41,7 +42,7 @@ func request_Scheduler_Ping_0(ctx context.Context, marshaler runtime.Marshaler, 
 }
 
 func local_request_Scheduler_Ping_0(ctx context.Context, marshaler runtime.Marshaler, server SchedulerServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq Empty
+	var protoReq base.Empty
 	var metadata runtime.ServerMetadata
 
 	msg, err := server.Ping(ctx, &protoReq)
@@ -61,7 +62,7 @@ func RegisterSchedulerHandlerServer(ctx context.Context, mux *runtime.ServeMux, 
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/golayout.v1.Scheduler/Ping", runtime.WithHTTPPathPattern("/v1/ping"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/v1.Scheduler/Ping", runtime.WithHTTPPathPattern("/v1/ping"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -123,7 +124,7 @@ func RegisterSchedulerHandlerClient(ctx context.Context, mux *runtime.ServeMux, 
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/golayout.v1.Scheduler/Ping", runtime.WithHTTPPathPattern("/v1/ping"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/v1.Scheduler/Ping", runtime.WithHTTPPathPattern("/v1/ping"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return

@@ -4,6 +4,7 @@ package v1
 
 import (
 	context "context"
+	base "github.com/comeonjy/go-layout/api/base"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -18,7 +19,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type SchedulerClient interface {
-	Ping(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Result, error)
+	Ping(ctx context.Context, in *base.Empty, opts ...grpc.CallOption) (*base.Result, error)
 }
 
 type schedulerClient struct {
@@ -29,9 +30,9 @@ func NewSchedulerClient(cc grpc.ClientConnInterface) SchedulerClient {
 	return &schedulerClient{cc}
 }
 
-func (c *schedulerClient) Ping(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Result, error) {
-	out := new(Result)
-	err := c.cc.Invoke(ctx, "/golayout.v1.Scheduler/Ping", in, out, opts...)
+func (c *schedulerClient) Ping(ctx context.Context, in *base.Empty, opts ...grpc.CallOption) (*base.Result, error) {
+	out := new(base.Result)
+	err := c.cc.Invoke(ctx, "/v1.Scheduler/Ping", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -42,7 +43,7 @@ func (c *schedulerClient) Ping(ctx context.Context, in *Empty, opts ...grpc.Call
 // All implementations must embed UnimplementedSchedulerServer
 // for forward compatibility
 type SchedulerServer interface {
-	Ping(context.Context, *Empty) (*Result, error)
+	Ping(context.Context, *base.Empty) (*base.Result, error)
 	mustEmbedUnimplementedSchedulerServer()
 }
 
@@ -50,7 +51,7 @@ type SchedulerServer interface {
 type UnimplementedSchedulerServer struct {
 }
 
-func (UnimplementedSchedulerServer) Ping(context.Context, *Empty) (*Result, error) {
+func (UnimplementedSchedulerServer) Ping(context.Context, *base.Empty) (*base.Result, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Ping not implemented")
 }
 func (UnimplementedSchedulerServer) mustEmbedUnimplementedSchedulerServer() {}
@@ -67,7 +68,7 @@ func RegisterSchedulerServer(s grpc.ServiceRegistrar, srv SchedulerServer) {
 }
 
 func _Scheduler_Ping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Empty)
+	in := new(base.Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -76,10 +77,10 @@ func _Scheduler_Ping_Handler(srv interface{}, ctx context.Context, dec func(inte
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/golayout.v1.Scheduler/Ping",
+		FullMethod: "/v1.Scheduler/Ping",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SchedulerServer).Ping(ctx, req.(*Empty))
+		return srv.(SchedulerServer).Ping(ctx, req.(*base.Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -88,7 +89,7 @@ func _Scheduler_Ping_Handler(srv interface{}, ctx context.Context, dec func(inte
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var Scheduler_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "golayout.v1.Scheduler",
+	ServiceName: "v1.Scheduler",
 	HandlerType: (*SchedulerServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

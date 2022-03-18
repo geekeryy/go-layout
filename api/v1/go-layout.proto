@@ -1,28 +1,19 @@
 syntax = "proto3";
 
-package golayout.v1;
+package v1;
 
 
-import "google/protobuf/any.proto";
 import "google/api/annotations.proto";
+import "api/base/base.proto";
 
 
-option go_package = ".;v1";
+option go_package = "github.com/comeonjy/go-layout/api/v1;v1";
 
 service Scheduler{
-  rpc Ping (Empty) returns (Result) {
+  rpc Ping (base.Empty) returns (base.Result) {
     option (google.api.http) = {
       get: "/v1/ping"
     };
   }
 }
 
-message Result{
-  int64 code = 1;
-  string message = 2;
-  google.protobuf.Any data = 3;
-}
-
-message Empty{
-
-}

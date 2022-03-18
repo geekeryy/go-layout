@@ -4,6 +4,7 @@ import (
 	"context"
 	"log"
 
+	"github.com/comeonjy/go-layout/api/base"
 	"github.com/comeonjy/go-layout/internal/domain/aggregate"
 	"github.com/google/wire"
 	"google.golang.org/grpc/metadata"
@@ -37,13 +38,13 @@ func (svc *SchedulerService) AuthFuncOverride(ctx context.Context, fullMethodNam
 	return ctx, nil
 }
 
-func (svc *SchedulerService) Ping(ctx context.Context, in *v1.Empty) (*v1.Result, error) {
+func (svc *SchedulerService) Ping(ctx context.Context, in *base.Empty) (*base.Result, error) {
 	info, err := svc.workUseCase.GetInfo(1)
 	if err != nil {
 		return nil, err
 	}
 	log.Println(info)
-	return &v1.Result{
+	return &base.Result{
 		Code:    200,
 		Message: svc.conf.Get().Mode,
 		Data:    nil,
