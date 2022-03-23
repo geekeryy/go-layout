@@ -3,27 +3,28 @@ package service
 import (
 	"context"
 	"log"
+	"time"
 
 	"github.com/comeonjy/go-layout/api/base"
+	"github.com/comeonjy/go-layout/internal/config"
 	"github.com/comeonjy/go-layout/internal/domain/aggregate"
 	"github.com/google/wire"
 	"google.golang.org/grpc/metadata"
 
 	"github.com/comeonjy/go-kit/pkg/xlog"
 	v1 "github.com/comeonjy/go-layout/api/v1"
-	"github.com/comeonjy/go-layout/configs"
 )
 
 var ProviderSet = wire.NewSet(NewSchedulerService)
 
 type SchedulerService struct {
 	v1.UnimplementedSchedulerServer
-	conf        configs.Interface
+	conf        config.Interface
 	logger      *xlog.Logger
 	workUseCase *aggregate.WorkUseCase
 }
 
-func NewSchedulerService(conf configs.Interface, logger *xlog.Logger, workUseCase *aggregate.WorkUseCase) *SchedulerService {
+func NewSchedulerService(conf config.Interface, logger *xlog.Logger, workUseCase *aggregate.WorkUseCase) *SchedulerService {
 	return &SchedulerService{
 		conf:        conf,
 		workUseCase: workUseCase,
@@ -44,6 +45,7 @@ func (svc *SchedulerService) Ping(ctx context.Context, in *base.Empty) (*base.Re
 		return nil, err
 	}
 	log.Println(info)
+	time.Sleep(time.Second * 10)
 	return &base.Result{
 		Code:    200,
 		Message: svc.conf.Get().Mode,

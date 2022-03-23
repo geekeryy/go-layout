@@ -7,17 +7,17 @@ import (
 	"github.com/comeonjy/go-kit/pkg/xenv"
 	"github.com/comeonjy/go-kit/pkg/xlog"
 	"github.com/comeonjy/go-kit/pkg/xmiddleware"
+	"github.com/comeonjy/go-layout/internal/config"
 	"github.com/google/wire"
 	"google.golang.org/grpc"
 
 	"github.com/comeonjy/go-layout/api/v1"
-	"github.com/comeonjy/go-layout/configs"
 	"github.com/comeonjy/go-layout/internal/service"
 )
 
 var ProviderSet = wire.NewSet(NewGrpcServer, NewHttpServer)
 
-func NewGrpcServer(srv *service.SchedulerService, conf configs.Interface, logger *xlog.Logger) *grpc.Server {
+func NewGrpcServer(srv *service.SchedulerService, conf config.Interface, logger *xlog.Logger) *grpc.Server {
 	server := grpc.NewServer(
 		grpc.ConnectionTimeout(2*time.Second),
 		grpc.ChainUnaryInterceptor(

@@ -3,11 +3,11 @@ module github.com/comeonjy/go-layout
 go 1.18
 
 require (
-	github.com/comeonjy/go-kit v0.0.0-20220316095603-b034809497cc
+	github.com/comeonjy/go-kit v0.0.0-20220323155508-a1850b28faff
 	github.com/google/wire v0.5.0
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.6.0
 	github.com/spf13/cobra v1.2.1
-	golang.org/x/net v0.0.0-20211015210444-4f30a5c0130f // indirect
+	golang.org/x/net v0.0.0-20220127200216-cd36cc0744dd // indirect
 	golang.org/x/sys v0.0.0-20220310020820-b874c991c1a5 // indirect
 	golang.org/x/text v0.3.7 // indirect
 	google.golang.org/genproto v0.0.0-20211008145708-270636b82663

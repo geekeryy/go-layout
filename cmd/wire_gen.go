@@ -4,32 +4,29 @@
 //go:build !wireinject
 // +build !wireinject
 
-package cmd
+package main
 
 import (
 	"context"
+	"github.com/comeonjy/go-kit/app"
 	"github.com/comeonjy/go-kit/pkg/xlog"
-	"github.com/comeonjy/go-layout/configs"
+	"github.com/comeonjy/go-layout/internal/config"
 	"github.com/comeonjy/go-layout/internal/domain/aggregate"
 	"github.com/comeonjy/go-layout/internal/infra/persistence"
 	"github.com/comeonjy/go-layout/internal/server"
 	"github.com/comeonjy/go-layout/internal/service"
 )
 
-import (
-	_ "net/http/pprof"
-)
-
 // Injectors from wire.go:
 
-func InitApp(ctx context.Context, logger *xlog.Logger) *App {
-	configsInterface := configs.NewConfig(ctx)
-	data := persistence.NewData(configsInterface)
+func InitApp(ctx context.Context, logger *xlog.Logger) *app.App {
+	configInterface := config.NewConfig(ctx)
+	data := persistence.NewData(configInterface)
 	workRepo := persistence.NewWorkRepo(data)
 	workUseCase := aggregate.NewWorkUseCase(workRepo)
-	schedulerService := service.NewSchedulerService(configsInterface, logger, workUseCase)
-	grpcServer := server.NewGrpcServer(schedulerService, configsInterface, logger)
-	httpServer := server.NewHttpServer(ctx, configsInterface, logger, schedulerService)
-	app := newApp(ctx, grpcServer, httpServer, configsInterface)
-	return app
+	schedulerService := service.NewSchedulerService(configInterface, logger, workUseCase)
+	httpServer := server.NewHttpServer(ctx, logger, schedulerService)
+	grpcServer := server.NewGrpcServer(schedulerService, configInterface, logger)
+	appApp := app.NewApp(ctx, httpServer, grpcServer)
+	return appApp
 }

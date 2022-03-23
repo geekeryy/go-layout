@@ -1,7 +1,7 @@
 package persistence
 
 import (
-	"github.com/comeonjy/go-layout/configs"
+	"github.com/comeonjy/go-layout/internal/config"
 	"github.com/google/wire"
 )
 
@@ -10,6 +10,6 @@ var ProviderSet = wire.NewSet(NewData, NewWorkRepo)
 type Data struct {
 }
 
-func NewData(cfg configs.Interface) *Data {
+func NewData(cfg config.Interface) *Data {
 	return &Data{}
 }
