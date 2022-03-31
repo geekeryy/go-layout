@@ -10,16 +10,17 @@ import (
 	"github.com/spf13/cobra"
 )
 
+func init() {
+	xenv.Init(map[string]string{
+		xenv.AppName:     "go-layout",
+		xenv.AppVersion:  "v1.0",
+		xenv.ApolloAppID: "go-layout",
+	})
+	log.Println("APP_ENV", xenv.GetEnv(xenv.AppEnv))
+}
+
 var rootCmd = &cobra.Command{
 	Run: func(c *cobra.Command, args []string) {
-		xenv.Init(map[string]string{
-			xenv.AppName:     "go-layout",
-			xenv.AppVersion:  "v1.0",
-			xenv.ApolloAppID: "go-layout",
-		})
-
-		log.Println("APP_ENV", xenv.GetEnv(xenv.AppEnv))
-
 		xpprof.Launch("localhost:" + xenv.GetEnv(xenv.PprofPort))
 
 		logger := xlog.New(xlog.WithTrace(xenv.GetEnv(xenv.TraceName)))
