@@ -7,7 +7,7 @@ import (
 	"github.com/comeonjy/go-kit/pkg/xenv"
 	"github.com/comeonjy/go-kit/pkg/xlog"
 	"github.com/comeonjy/go-kit/pkg/xmiddleware"
-	"github.com/comeonjy/go-layout/internal/config"
+	"github.com/comeonjy/go-layout/config"
 	"github.com/google/wire"
 	"google.golang.org/grpc"
 

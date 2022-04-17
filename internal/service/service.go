@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/comeonjy/go-layout/api/base"
-	"github.com/comeonjy/go-layout/internal/config"
+	"github.com/comeonjy/go-layout/config"
 	"github.com/comeonjy/go-layout/internal/domain/aggregate"
 	"github.com/google/wire"
 	"google.golang.org/grpc/metadata"

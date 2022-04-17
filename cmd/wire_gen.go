@@ -10,7 +10,7 @@ import (
 	"context"
 	"github.com/comeonjy/go-kit/app"
 	"github.com/comeonjy/go-kit/pkg/xlog"
-	"github.com/comeonjy/go-layout/internal/config"
+	"github.com/comeonjy/go-layout/config"
 	"github.com/comeonjy/go-layout/internal/domain/aggregate"
 	"github.com/comeonjy/go-layout/internal/infra/persistence"
 	"github.com/comeonjy/go-layout/internal/server"

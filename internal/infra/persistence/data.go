@@ -1,7 +1,7 @@
 package persistence
 
 import (
-	"github.com/comeonjy/go-layout/internal/config"
+	"github.com/comeonjy/go-layout/config"
 	"github.com/google/wire"
 )
 
