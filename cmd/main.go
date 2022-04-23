@@ -13,8 +13,8 @@ import (
 func init() {
 	xenv.Init(map[string]string{
 		xenv.AppName:     "go-layout",
-		xenv.AppVersion:  "v1.0",
 		xenv.ApolloAppID: "go-layout",
+		xenv.AppVersion:  "v1.0",
 	})
 	log.Println("APP_ENV", xenv.GetEnv(xenv.AppEnv))
 }
